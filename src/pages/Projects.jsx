@@ -42,7 +42,7 @@ const projectsData = [
       "Creating a dynamic dashboard with nested routes",
     ],
     tech: ["React", "TailwindCSS", "Express", "MongoDB"],
-    images: [project1Img, project2Img, project3Img],
+    images: [projectImg11, projectImg112, projectImg113],
     links: {
       demo: "https://summer-box.web.app/",
       github: "https://github.com/zingrin/Summer-Box",
@@ -58,7 +58,7 @@ const projectsData = [
       "Building real-time update functionality for posts and comments",
     ],
     tech: ["React", "TailwindCSS", "Express", "MongoDB"],
-    images: [projectImg11, projectImg112, projectImg113],
+    images: [project1Img, project2Img, project3Img],
     links: {
       demo: "https://hobby-hub-88270.web.app/",
       github: "https://github.com/zingrin/hobby-hub-client-side",
