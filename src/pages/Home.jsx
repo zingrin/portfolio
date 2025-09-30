@@ -4,7 +4,6 @@ import Projects from './Projects';
 import AboutMe from './AboutMe';
 import Hero from '../components/Hero';
 import Contact from '../components/Contact';
-import Footer from '../components/Footer';
 import Education from '../components/Education';
 
 const Home = () => {
@@ -16,7 +15,6 @@ const Home = () => {
             <Projects></Projects>
             <Education></Education>
             <Contact></Contact>
-            <Footer></Footer>
         </div>
     );
 };
