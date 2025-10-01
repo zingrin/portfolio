@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaReact, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiTailwindcss, SiNodedotjs } from "react-icons/si";
+import {
+  SiMongodb,
+  SiExpress,
+  SiTailwindcss,
+  SiNodedotjs,
+} from "react-icons/si";
 
 // Project images
 import project1Img from "../assets/project1Img.png";
@@ -66,114 +71,106 @@ const projectsData = [
   },
 ];
 
-const techIcons = {
-  React: <FaReact />,
-  Express: <SiExpress />,
-  MongoDB: <SiMongodb />,
-  TailwindCSS: <SiTailwindcss />,
-  "Node.js": <SiNodedotjs />,
-};
+// const techIcons = {
+//   React: <FaReact />,
+//   Express: <SiExpress />,
+//   MongoDB: <SiMongodb />,
+//   TailwindCSS: <SiTailwindcss />,
+//   "Node.js": <SiNodedotjs />,
+// };
 
 const Projects = () => {
   const [currentSlides, setCurrentSlides] = useState(
     projectsData.map(() => 0)
   );
 
-  const handleNext = (idx) => {
-    setCurrentSlides((prev) =>
-      prev.map((slide, i) =>
-        i === idx ? (slide + 1) % projectsData[i].images.length : slide
-      )
-    );
-  };
-
-  const handlePrev = (idx) => {
-    setCurrentSlides((prev) =>
-      prev.map((slide, i) =>
-        i === idx
-          ? (slide - 1 + projectsData[i].images.length) %
-            projectsData[i].images.length
-          : slide
-      )
-    );
-  };
+  // Auto slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlides((prev) =>
+        prev.map((slide, i) => (slide + 1) % projectsData[i].images.length)
+      );
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="min-h-screen w-full bg-white px-4 py-12">
-      <div className="max-w-6xl mx-auto space-y-12">
-        {projectsData.map((proj, idx) => (
-          <div
-            key={idx}
-            className="flex flex-col md:flex-row items-center bg-white border-2 border-cyan-500 rounded-2xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105"
-          >
-            {/* Image Slider */}
-            <div className="md:w-1/2 relative">
-              <img
-                src={proj.images[currentSlides[idx]]}
-                alt={proj.title}
-                className="w-full h-80 md:h-full object-cover"
-              />
-              {proj.images.length > 1 && (
-                <>
-                  <button
-                    onClick={() => handlePrev(idx)}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full"
-                  >
-                    &lt;
-                  </button>
-                  <button
-                    onClick={() => handleNext(idx)}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full"
-                  >
-                    &gt;
-                  </button>
-                </>
-              )}
-            </div>
+    <div className="min-h-screen w-full bg-white px-2 sm:px-4 py-8 sm:py-12">
+      <div className="max-w-6xl mx-auto space-y-6">
+        {/* Section Title */}
+        <div className="text-center mb-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-cyan-600">
+            My Projects
+          </h2>
+          <p className="text-gray-700 text-sm sm:text-base mt-2">
+            Explore some of the applications I've built
+          </p>
+        </div>
 
-            {/* Details */}
-            <div className="md:w-1/2 p-8 space-y-4">
-              <h2 className="text-3xl font-bold text-cyan-600">{proj.title}</h2>
-              <p className="text-gray-700">{proj.description}</p>
-
-              <h4 className="text-lg font-semibold text-purple-600">
-                Challenges I Faced:
-              </h4>
-              <ul className="list-disc list-inside text-gray-700 space-y-1">
-                {proj.challenges.map((ch, i) => (
-                  <li key={i}>{ch}</li>
-                ))}
-              </ul>
-
-              {/* Tech Stack */}
-              <div className="flex space-x-4 text-3xl text-gray-600 mt-2">
-                {proj.tech.map((tech, i) => (
-                  <span key={i}>{techIcons[tech] || null}</span>
-                ))}
+        {/* Project Cards */}
+        <div className="space-y-10">
+          {projectsData.map((proj, idx) => (
+            <div
+              key={idx}
+              className="flex flex-col md:flex-row items-stretch bg-white border border-cyan-400 rounded-xl sm:rounded-2xl overflow-hidden shadow-md sm:shadow-lg transform transition-transform duration-300 hover:scale-[1.02]"
+            >
+              {/* Image Carousel */}
+              <div className="md:w-1/2 relative h-64 sm:h-80 md:h-auto flex items-center justify-center bg-white">
+                <img
+                  src={proj.images[currentSlides[idx]]}
+                  alt={proj.title}
+                  className="max-h-full w-full object-contain"
+                />
               </div>
 
-              {/* Links */}
-              <div className="flex space-x-6 mt-4 text-3xl text-cyan-600">
-                <a
-                  href={proj.links.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Live Demo"
-                >
-                  <FaExternalLinkAlt />
-                </a>
-                <a
-                  href={proj.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="GitHub"
-                >
-                  <FaGithub />
-                </a>
+              {/* Details */}
+              <div className="md:w-1/2 flex flex-col justify-center p-4 sm:p-8 space-y-3 sm:space-y-4">
+                <h3 className="text-2xl sm:text-3xl font-bold text-cyan-600">
+                  {proj.title}
+                </h3>
+                <p className="text-gray-700 text-sm sm:text-base">
+                  {proj.description}
+                </p>
+
+                <h4 className="text-md sm:text-lg font-semibold text-purple-600">
+                  Challenges I Faced:
+                </h4>
+                <ul className="list-disc list-inside text-gray-700 space-y-1 text-sm sm:text-base">
+                  {proj.challenges.map((ch, i) => (
+                    <li key={i}>{ch}</li>
+                  ))}
+                </ul>
+
+                {/* Tech Stack */}
+                {/* <div className="flex space-x-3 sm:space-x-4 text-lg sm:text-xl text-gray-600 mt-2">
+                  {proj.tech.map((tech, i) => (
+                    <span key={i}>{techIcons[tech] || null}</span>
+                  ))}
+                </div> */}
+
+                {/* Links */}
+                <div className="flex space-x-4 sm:space-x-6 mt-3 sm:mt-4 text-lg sm:text-xl text-cyan-600">
+                  <a
+                    href={proj.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Live Demo"
+                  >
+                    <FaExternalLinkAlt />
+                  </a>
+                  <a
+                    href={proj.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="GitHub"
+                  >
+                    <FaGithub />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
