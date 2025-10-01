@@ -14,14 +14,14 @@ const AboutMe = () => {
           intuitive interfaces, and building web experiences that bring concepts
           to life.
         </p>
-        <p className="mt-4 text-gray-600 leading-relaxed">
+        <p className="mt-4 text-gray-700 leading-relaxed">
           Beyond coding, I’m an explorer at heart — I enjoy cooking new recipes,
           capturing moments through photography, diving into inspiring books,
           and discovering new places. I believe in lifelong learning, and I’m
           always seeking opportunities to improve my skills and contribute to
           meaningful projects.
         </p>
-        <p className="mt-4 text-gray-600 leading-relaxed">
+        <p className="mt-4 text-gray-700 leading-relaxed">
           Let’s connect and create something extraordinary together!
         </p>
       </div>

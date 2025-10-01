@@ -29,7 +29,7 @@ const Hero = () => {
             />
           </span>
         </h3>
-        <p className="text-gray-600 max-w-lg">
+        <p className="text-gray-700 max-w-lg">
           I am a dedicated Web Designer and React Developer, specializing in
           creating modern, responsive websites and intuitive frontend
           interfaces. I blend creativity with advanced technologies to deliver
