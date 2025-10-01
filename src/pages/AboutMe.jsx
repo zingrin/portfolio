@@ -8,7 +8,7 @@ const AboutMe = () => {
         <p className="text-gray-600 leading-relaxed">
           Hello! I’m{" "}
           <span className="font-semibold text-cyan-600">Zingrin Moi Bawm</span>
-          Hello! I'm a passionate and creative front-end and backend web
+         I'm a passionate and creative front-end and backend web
           developer, currently starting my professional journey. As a fresher, I
           spend most of my time experimenting with new ideas, designing
           intuitive interfaces, and building web experiences that bring concepts
