@@ -1,9 +1,19 @@
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
+import {
+  Mail,
+  MapPin,
+  Clock,
+  Github,
+  Linkedin,
+  Copy,
+} from "lucide-react";
+import { BsWhatsapp } from "react-icons/bs";
 
 const Contact = () => {
   const formRef = useRef();
   const [status, setStatus] = useState(null);
+const [copied, setCopied] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -27,6 +37,7 @@ const Contact = () => {
         (result) => {
           setStatus("SUCCESS");
           formRef.current.reset();
+          setTimeout(() => setStatus(null), 5000);
         },
         (error) => {
           setStatus("FAILED");
@@ -36,25 +47,92 @@ const Contact = () => {
   };
 
   return (
-    <section className="bg-white text-gray-900 py-16 px-4">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-        {/* Left Side */}
+    <section className="bg-[#fcfdff] py-20 px-6">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
+        {/* Left Side: Contact Information */}
         <div>
-          <h2 className="text-4xl font-bold mb-4">
-            Contact <span className="text-cyan-600">Me</span>
+          <h2 className="text-5xl font-extrabold mb-10 text-slate-900 tracking-tight">
+            Contact <span className="text-cyan-400">Information</span>
           </h2>
-          <p className="text-gray-700 mb-6">
-            I’m always open to new ideas and collaborations. Whether you want
-            to work together on a project or just say hello, feel free to reach
-            out. Let’s create something amazing!
-          </p>
-          <div className="mb-4 text-gray-700">
-            <p className="mb-2 flex items-center gap-2 hover:text-cyan-600 transition-colors duration-200 cursor-pointer">
-              <span>📧</span> jerinloncheu@gmail.com
-            </p>
-            <p className="flex items-center gap-2 hover:text-cyan-600 transition-colors duration-200 cursor-pointer">
-              <span>📞</span> +8801755171954
-            </p>
+
+          <div className="space-y-4 mb-12">
+            {/* Email Card */}
+            <div className="flex items-center gap-5 p-5 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]">
+              <div className="p-3 bg-indigo-50 text-cyan-500 rounded-xl">
+                <Mail size={26} />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 text-lg">Email</p>
+                <p className="text-slate-500 font-medium">
+                  jerinloncheu@gmail.com
+                </p>
+                
+<button
+  onClick={() => {
+    navigator.clipboard.writeText("jerinloncheu@gmail.com")
+      .then(() => setCopied(true))
+      .catch(() => setCopied(false));
+
+    setTimeout(() => setCopied(false), 3000); 
+  }}
+  className="flex items-center gap-1 text-cyan-500 text-sm mt-1 font-semibold hover:text-cyan-600 transition-colors"
+>
+  <Copy size={14} /> {copied ? "Copied!" : "Copy"}
+</button>
+              </div>
+            </div>
+
+            {/* Location Card */}
+            <div className="flex items-center gap-5 p-5 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]">
+              <div className="p-3 bg-indigo-50 text-cyan-500 rounded-xl">
+                <MapPin size={26} />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 text-lg">Location</p>
+                <p className="text-slate-500 font-medium">
+                  Chittagong, Bangladesh
+                </p>
+              </div>
+            </div>
+
+            {/* Availability Card */}
+            <div className="flex items-center gap-5 p-5 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]">
+              <div className="p-3 bg-indigo-50 text-cyan-500 rounded-xl">
+                <Clock size={26} />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 text-lg">Availability</p>
+                <p className="text-slate-500 font-medium text-sm md:text-base">
+                  Available for new opportunities
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Section */}
+          <div>
+            <h3 className="text-2xl font-bold mb-6 text-slate-900">
+              Connect With Me
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              <SocialBtn
+                icon={<Github size={20} />}
+                label="GitHub"
+                href="https://github.com/zingrin"
+              />
+
+              <SocialBtn
+                icon={<Linkedin size={20} />}
+                label="LinkedIn"
+                href="https://www.linkedin.com/in/zingrin"
+              />
+
+              <SocialBtn
+                icon={<BsWhatsapp size={20} />}
+                label="WhatsApp"
+                href="https://wa.me/8801755171954"
+              />
+            </div>
           </div>
         </div>
 
@@ -112,5 +190,18 @@ const Contact = () => {
     </section>
   );
 };
+
+// Updated Social Button
+const SocialBtn = ({ icon, label, href }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-indigo-200 transition-all text-slate-700 font-semibold text-sm"
+  >
+    <span className="text-slate-600">{icon}</span>
+    {label}
+  </a>
+);
 
 export default Contact;

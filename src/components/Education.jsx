@@ -1,25 +1,61 @@
 import React from "react";
+import { GraduationCap } from "lucide-react";
 
 const Education = () => {
   return (
-    <section className="bg-gray-100 text-gray-800 py-16 px-4">
-      <div className="max-w-4xl mx-auto space-y-6">
-        <h2 className="text-4xl font-bold text-cyan-600">Education</h2>
-        <div className="bg-white rounded-lg p-6 shadow-md">
-          <h3 className="text-2xl font-semibold mb-2">
-            Bachelor of Business Studies (BBA) - 2nd Semester
+    <section className="py-20 px-4">
+      <div className="max-w-5xl mx-auto">
+
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-10">
+          <GraduationCap className="w-8 h-8 text-cyan-600" />
+          <h2 className="text-4xl font-bold text-gray-900">
+            Education
+          </h2>
+        </div>
+
+        {/* Card */}
+        <div className="relative rounded-2xl p-8 shadow-lg border border-gray-200">
+          
+          {/* Accent */}
+          <div className="absolute top-0 left-0 h-full w-1 bg-cyan-500 rounded-l-2xl" />
+
+          <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+            Bachelor of Business Studies (BBA)
           </h3>
-          <p className="text-gray-800 mb-2">
-            <span className="font-semibold">Institution:</span> Bandarban University
+
+          <p className="text-sm text-gray-500 mb-4">
+            2nd Semester · Bandarban University
           </p>
-          <p className="text-gray-800 mb-2">
-            This program provides me with a strong foundation in <span className="font-semibold">business management, accounting, and economics</span>.
+
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Currently pursuing a Bachelor of Business Studies with a focus on
+            <span className="font-semibold text-gray-900">
+              {" "}business management, accounting, and economics
+            </span>.
+            This academic journey is strengthening my understanding of how
+            organizations operate and make strategic decisions.
           </p>
-          <p className="text-gray-800 mb-2">
-            I am passionate about applying theoretical knowledge to <span className="font-semibold">real-world challenges</span>, developing <span className="font-semibold">critical thinking skills</span>, and preparing myself for a <span className="font-semibold">successful career in the corporate sector</span>.
+
+          <p className="text-gray-700 leading-relaxed mb-4">
+            I actively seek opportunities to apply theoretical knowledge to
+            <span className="font-semibold text-gray-900">
+              {" "}real-world business challenges
+            </span>, while developing
+            <span className="font-semibold text-gray-900">
+              {" "}critical thinking, communication, and problem-solving skills
+            </span>.
           </p>
-          <p className="text-gray-800">
-            The college environment promotes both <span className="font-semibold">academic excellence</span> and <span className="font-semibold">personal growth</span>, encouraging me to take advantage of every learning opportunity and shape my professional journey.
+
+          <p className="text-gray-700 leading-relaxed">
+            The university environment encourages
+            <span className="font-semibold text-gray-900">
+              {" "}academic excellence
+            </span> and
+            <span className="font-semibold text-gray-900">
+              {" "}personal growth
+            </span>, helping me prepare for a successful
+            professional career in both corporate and entrepreneurial settings.
           </p>
         </div>
       </div>

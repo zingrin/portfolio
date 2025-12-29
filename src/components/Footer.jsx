@@ -9,7 +9,7 @@ const Footer = () => {
           
           {
             icon: <FaLinkedin />,
-            link: "https://www.linkedin.com/in/zingrin-moi-bawm-902503379",
+            link: "https://www.linkedin.com/in/zingrin",
             label: "LinkedIn",
           },
           {

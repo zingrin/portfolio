@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router";
 import Logo from "../pages/Logo";
-import resume from "../assets/resume.pdf";
+import resumeFrontend from "../assets/resume-frontend.pdf";
+import resumeBackend from "../assets/resume-backend.pdf";
+import resumeFullstack from "../assets/resume-fullstack.pdf";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showResumePopup, setShowResumePopup] = useState(false);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -16,6 +19,13 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
+
+  // Resume files
+  const resumes = [
+    { label: "Frontend", file: resumeFrontend },
+    { label: "Backend", file: resumeBackend },
+    { label: "Full-Stack", file: resumeFullstack },
+  ];
 
   return (
     <nav className="bg-white text-black shadow-md sticky top-0 z-50">
@@ -40,21 +50,33 @@ const Navbar = () => {
             </li>
           ))}
 
-          {/* Resume Button Desktop */}
-          <li>
-            <a
-              href={resume}
-              download
+          {/* Resume Dropdown Desktop */}
+          <li className="relative">
+            <button
+              onClick={() => setShowResumePopup((prev) => !prev)}
               className="btn btn-sm border border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white ml-4 transition duration-300"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Download Resume
-            </a>
+            </button>
+
+            {showResumePopup && (
+              <div className="absolute right-0 mt-2 w-40 bg-white border border-slate-200 rounded shadow-lg z-50">
+                {resumes.map(({ label, file }) => (
+                  <a
+                    key={label}
+                    href={file}
+                    download
+                    className="block px-4 py-2 text-gray-700 hover:bg-cyan-50 transition-colors"
+                  >
+                    {label} Resume
+                  </a>
+                ))}
+              </div>
+            )}
           </li>
         </ul>
 
-        {/* Hamburger Button */}
+        {/* Hamburger */}
         <button
           className="md:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded"
           onClick={toggleMenu}
@@ -108,18 +130,29 @@ const Navbar = () => {
             </li>
           ))}
 
-          {/* Resume Button Mobile */}
-          <li>
-            <a
-              href={resume}
-              download
-              onClick={closeMenu}
+          {/* Resume Dropdown Mobile */}
+          <li className="relative">
+            <button
+              onClick={() => setShowResumePopup((prev) => !prev)}
               className="btn btn-sm border border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white transition duration-300"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Download Resume
-            </a>
+            </button>
+
+            {showResumePopup && (
+              <div className="absolute top-full mt-2 w-40 bg-white border border-slate-200 rounded shadow-lg z-50">
+                {resumes.map(({ label, file }) => (
+                  <a
+                    key={label}
+                    href={file}
+                    download
+                    className="block px-4 py-2 text-gray-700 hover:bg-cyan-50 transition-colors"
+                  >
+                    {label} Resume
+                  </a>
+                ))}
+              </div>
+            )}
           </li>
         </ul>
       )}

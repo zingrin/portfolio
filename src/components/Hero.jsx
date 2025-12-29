@@ -19,7 +19,7 @@ const Hero = () => {
           I am a{" "}
           <span className="text-cyan-600 font-semibold">
             <Typewriter
-              words={["MERN Stack Developer", "React Developer", "UI Designer"]}
+              words={["Full-Stack Developer", " Frontend Developer", "Backend Developer"]}
               loop={true}
               cursor
               cursorStyle="|"
@@ -46,12 +46,12 @@ const Hero = () => {
           {[
             {
               icon: <FaWhatsapp />,
-              link: "https://web.whatsapp.com/",
+              link: "https://wa.me/8801755171954",
               label: "WhatsApp",
             },
             {
               icon: <FaLinkedin />,
-              link: "https://www.linkedin.com/in/zingrin-loncheu-902503379/",
+              link: "https://www.linkedin.com/in/zingrin",
               label: "LinkedIn",
             },
             {
