@@ -40,7 +40,7 @@ const Projects = () => {
               key={project.id}
               className="group bg-white rounded-2xl overflow-hidden
               border border-gray-200 transition-all duration-300
-              hover:-translate-y-2 hover:border-blue-400"
+              hover:-translate-y-2 hover:border-cyan-400"
             >
               {/* Image */}
               <div className="relative h-56 overflow-hidden">
@@ -54,7 +54,7 @@ const Projects = () => {
 
               {/* Content */}
               <div className="p-6 space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">
+                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-cyan-600">
                   {project.title}
                 </h3>
 
@@ -78,7 +78,7 @@ const Projects = () => {
                 <Link
                   to={`/projects/${project.id}`}
                   className="inline-block pt-2 text-sm font-medium
-                  text-blue-600 hover:underline"
+                  text-cyan-600 hover:underline"
                 >
                   Learn more →
                 </Link>

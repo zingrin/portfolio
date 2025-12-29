@@ -25,7 +25,7 @@ const ProjectDetails = () => {
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-sm font-medium
-            text-gray-600 hover:text-blue-600 transition"
+            text-gray-600 hover:text-cyan-600 transition"
           >
             ← Back to Home
           </Link>
@@ -78,7 +78,7 @@ const ProjectDetails = () => {
               {project.tech.map((tech, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 text-sm rounded-full bg-blue-50 text-blue-600"
+                  className="px-3 py-1 text-sm rounded-full bg-blue-50 text-cyan-600"
                 >
                   {tech}
                 </span>
@@ -103,7 +103,7 @@ const ProjectDetails = () => {
                   className={`h-16 w-24 overflow-hidden rounded-lg border
                     ${
                       activeImage === i
-                        ? "border-blue-500"
+                        ? "border-cyan-500"
                         : "border-gray-300"
                     }`}
                 >
@@ -121,7 +121,7 @@ const ProjectDetails = () => {
         {/* ================= OVERVIEW ================= */}
         <div className="max-w-4xl">
           <h2 className="text-3xl font-bold mb-6">
-            Project <span className="text-blue-500">Overview</span>
+            Project <span className="text-cyan-500">Overview</span>
           </h2>
 
           <p className="text-gray-600 leading-relaxed whitespace-pre-line">
@@ -133,7 +133,7 @@ const ProjectDetails = () => {
         {project.challenges?.length > 0 && (
           <div className="max-w-4xl">
             <h2 className="text-3xl font-bold mb-6">
-              Key <span className="text-blue-500">Challenges</span>
+              Key <span className="text-cyan-500">Challenges</span>
             </h2>
 
             <ul className="space-y-3 text-gray-600 list-disc list-inside">
