@@ -9,9 +9,7 @@ const Hero = () => {
     <section className="flex flex-col md:flex-row items-center justify-center px-6 py-16 bg-white text-gray-800">
       {/* Left Content */}
       <div className="md:w-1/2 md:pr-12 space-y-6">
-        <h2 className="text-lg text-gray-500 font-medium">
-          Hello, I’m
-        </h2>
+        <h2 className="text-lg text-gray-500 font-medium">Hello, I’m</h2>
         <h1 className="text-2xl md:text-2xl font-bold text-cyan-600 leading-tight">
           Zingrin Moi Bawm
         </h1>
@@ -19,7 +17,11 @@ const Hero = () => {
           I am a{" "}
           <span className="text-cyan-600 font-semibold">
             <Typewriter
-              words={["Full-Stack Developer", " Frontend Developer", "Backend Developer"]}
+              words={[
+                "Full-Stack Developer",
+                " Frontend Developer",
+                "Backend Developer",
+              ]}
               loop={true}
               cursor
               cursorStyle="|"
@@ -46,7 +48,7 @@ const Hero = () => {
           {[
             {
               icon: <FaWhatsapp />,
-              link: "https://wa.me/8801755171954",
+              link: "https://wa.me/8801616887121",
               label: "WhatsApp",
             },
             {

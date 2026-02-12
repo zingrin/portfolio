@@ -1,19 +1,12 @@
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
-import {
-  Mail,
-  MapPin,
-  Clock,
-  Github,
-  Linkedin,
-  Copy,
-} from "lucide-react";
+import { Mail, MapPin, Clock, Github, Linkedin, Copy } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 
 const Contact = () => {
   const formRef = useRef();
   const [status, setStatus] = useState(null);
-const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -31,7 +24,7 @@ const [copied, setCopied] = useState(false);
         "service_vm9x8ah",
         "template_7b8jbof",
         templateParams,
-        "i6jP6CnJdDJDJSeHb"
+        "i6jP6CnJdDJDJSeHb",
       )
       .then(
         (result) => {
@@ -42,7 +35,7 @@ const [copied, setCopied] = useState(false);
         (error) => {
           setStatus("FAILED");
           console.error(error.text);
-        }
+        },
       );
   };
 
@@ -66,19 +59,20 @@ const [copied, setCopied] = useState(false);
                 <p className="text-slate-500 font-medium">
                   jerinloncheu@gmail.com
                 </p>
-                
-<button
-  onClick={() => {
-    navigator.clipboard.writeText("jerinloncheu@gmail.com")
-      .then(() => setCopied(true))
-      .catch(() => setCopied(false));
 
-    setTimeout(() => setCopied(false), 3000); 
-  }}
-  className="flex items-center gap-1 text-cyan-500 text-sm mt-1 font-semibold hover:text-cyan-600 transition-colors"
->
-  <Copy size={14} /> {copied ? "Copied!" : "Copy"}
-</button>
+                <button
+                  onClick={() => {
+                    navigator.clipboard
+                      .writeText("jerinloncheu@gmail.com")
+                      .then(() => setCopied(true))
+                      .catch(() => setCopied(false));
+
+                    setTimeout(() => setCopied(false), 3000);
+                  }}
+                  className="flex items-center gap-1 text-cyan-500 text-sm mt-1 font-semibold hover:text-cyan-600 transition-colors"
+                >
+                  <Copy size={14} /> {copied ? "Copied!" : "Copy"}
+                </button>
               </div>
             </div>
 
@@ -130,7 +124,7 @@ const [copied, setCopied] = useState(false);
               <SocialBtn
                 icon={<BsWhatsapp size={20} />}
                 label="WhatsApp"
-                href="https://wa.me/8801755171954"
+                href="https://wa.me/8801616887121"
               />
             </div>
           </div>
@@ -183,7 +177,9 @@ const [copied, setCopied] = useState(false);
             <p className="text-green-600 mt-4">Message sent successfully!</p>
           )}
           {status === "FAILED" && (
-            <p className="text-red-600 mt-4">Failed to send message. Try again.</p>
+            <p className="text-red-600 mt-4">
+              Failed to send message. Try again.
+            </p>
           )}
         </form>
       </div>
